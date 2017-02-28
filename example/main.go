@@ -1,9 +1,7 @@
-# class_loader
-class loader in Go
+// GNU GPL v3 License
 
-## [Example](example/main.go)
+// Copyright (c) 2017 github.com:go-trellis
 
-```go
 package main
 
 import (
@@ -73,4 +71,3 @@ func NameTest() {
 
 	testI.Hello("name class loaded")
 }
-```
