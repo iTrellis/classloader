@@ -15,6 +15,8 @@ import (
 
 type Test struct{}
 
+func (p *Test) Construct() {}
+
 func (p Test) Hello(name string) {
 	fmt.Println("hello:", name)
 }
@@ -32,6 +34,8 @@ func main() {
 	NameTest()
 
 	ClassLoaderTest()
+
+	DynamicAccess()
 }
 
 func ClassLoaderTest() {
@@ -52,6 +56,7 @@ func ClassLoaderTest() {
 	testI, _ := test.Interface().(*Test)
 
 	testI.Hello("class loaded")
+
 }
 
 func NameTest() {
@@ -72,5 +77,21 @@ func NameTest() {
 	testI, _ := test.Interface().(*Test)
 
 	testI.Hello("name class loaded")
+}
+
+func DynamicAccess() {
+	da := class_loader.NewReflectiveDynamicAccess(class_loader.Default)
+
+	fmt.Println(da.GetClassFor("class_loader:Test"))
+
+	ins, e := da.CreateInstanceByName("class_loader:Test")
+	if e != nil {
+		fmt.Println("error:", e)
+		return
+	}
+
+	testI, _ := ins.(*Test)
+
+	testI.Hello("DynamicAccess")
 }
 ```
