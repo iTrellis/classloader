@@ -9,6 +9,7 @@ import (
 	"reflect"
 )
 
+// ErrorType define error type
 var ErrorType = reflect.TypeOf((*error)(nil)).Elem()
 
 // reflective dynamic access errors

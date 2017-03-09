@@ -10,6 +10,7 @@ import (
 	"sync"
 )
 
+// ClassLoader class loader funtions
 type ClassLoader interface {
 	GetParent() ClassLoader
 	LoadClass(name string, v interface{})
@@ -17,6 +18,7 @@ type ClassLoader interface {
 	FindLoadedClass(name string) bool
 }
 
+// Default default class loader
 var Default = NewClassLoader(nil)
 
 type defaultClassLoader struct {
@@ -27,6 +29,7 @@ type defaultClassLoader struct {
 	locker sync.RWMutex
 }
 
+// NewClassLoader generate class loader with giving parent class loader
 func NewClassLoader(parent ClassLoader) ClassLoader {
 	return &defaultClassLoader{
 		parent:    parent,

@@ -9,7 +9,7 @@ import (
 	"reflect"
 )
 
-// the ReflectiveDynamicAccess is the default implementation akka.DynamicAccess
+// ReflectiveDynamicAccess is the default implementation akka.DynamicAccess
 type ReflectiveDynamicAccess struct {
 	classLoader ClassLoader
 }
@@ -26,7 +26,8 @@ func NewReflectiveDynamicAccess(classLoader ClassLoader) DynamicAccess {
 	return da
 }
 
-// Convenience method which given a Class[_] object and a constructor description will create a new instance of that class.
+// CreateInstanceByType Convenience method which given a Class[_] object and a constructor description
+// will create a new instance of that class.
 func (p *ReflectiveDynamicAccess) CreateInstanceByType(typ reflect.Type, args ...interface{}) (
 	ins interface{}, err error) {
 	value := reflect.New(typ)
