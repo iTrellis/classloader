@@ -71,6 +71,7 @@ func (p *defaultClassLoader) LoadClass(name string, v interface{}) {
 		}
 	default:
 		// unsupported class' type
+		p.locker.Unlock()
 		return
 	}
 
