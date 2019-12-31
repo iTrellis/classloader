@@ -1,8 +1,7 @@
 // GNU GPL v3 License
-
 // Copyright (c) 2017 github.com:go-trellis
 
-package class_loader
+package classloader
 
 import (
 	"errors"

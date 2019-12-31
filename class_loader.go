@@ -1,8 +1,7 @@
 // GNU GPL v3 License
-
 // Copyright (c) 2017 github.com:go-trellis
 
-package class_loader
+package classloader
 
 import (
 	"fmt"
@@ -84,8 +83,6 @@ func (p *defaultClassLoader) LoadClass(name string, v interface{}) {
 	}
 
 	p.locker.Unlock()
-
-	return
 }
 
 func (p *defaultClassLoader) FindClass(name interface{}) (typ reflect.Type, exist bool) {

@@ -1,5 +1,4 @@
 // GNU GPL v3 License
-
 // Copyright (c) 2017 github.com:go-trellis
 
 package main
@@ -8,7 +7,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/go-trellis/class_loader"
+	"github.com/go-trellis/classloader"
 )
 
 type Test struct{}
@@ -20,14 +19,14 @@ func (p Test) Hello(name string) {
 }
 
 func main() {
-	c := class_loader.Default
+	c := classloader.Default
 
-	c.LoadClass("class_loader:Test", (*Test)(nil))
+	c.LoadClass("classloader:Test", (*Test)(nil))
 
 	c.LoadClass("", (*Test)(nil))
 
 	// unsupported class' type: string
-	c.LoadClass("class_loader:Aha", "name")
+	c.LoadClass("classloader:Aha", "name")
 
 	NameTest()
 
@@ -38,16 +37,16 @@ func main() {
 
 func ClassLoaderTest() {
 
-	t, e := class_loader.Default.FindClass((*Test)(nil))
+	t, e := classloader.Default.FindClass((*Test)(nil))
 	if !e {
-		fmt.Println("error:", "class_loader:Test not exist")
+		fmt.Println("error:", "classloader:Test not exist")
 		return
 	}
 
 	test := reflect.New(t)
 
 	if !test.IsValid() {
-		fmt.Println("error:", "class_loader:Test is invalid")
+		fmt.Println("error:", "classloader:Test is invalid")
 		return
 	}
 
@@ -59,7 +58,7 @@ func ClassLoaderTest() {
 
 func NameTest() {
 
-	t, e := class_loader.Default.FindClass("class_loader:Test")
+	t, e := classloader.Default.FindClass("classloader:Test")
 	if !e {
 		fmt.Println("error:", "name class not exist")
 		return
@@ -78,11 +77,11 @@ func NameTest() {
 }
 
 func DynamicAccess() {
-	da := class_loader.NewReflectiveDynamicAccess(class_loader.Default)
+	da := classloader.NewReflectiveDynamicAccess(classloader.Default)
 
-	fmt.Println(da.GetClassFor("class_loader:Test"))
+	fmt.Println(da.GetClassFor("classloader:Test"))
 
-	ins, e := da.CreateInstanceByName("class_loader:Test")
+	ins, e := da.CreateInstanceByName("classloader:Test")
 	if e != nil {
 		fmt.Println("error:", e)
 		return
