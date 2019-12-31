@@ -1,8 +1,7 @@
 language: go
 
 install:
-  - go get github.com/smartystreets/goconvey/convey
-  - go get github.com/go-trellis/class_loader
+  - go get github.com/go-trellis/classloader
 
 script:
   - go test -v ./...
