@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/go-trellis/classloader"
+	"github.com/iTrellis/classloader"
 )
 
 type Test struct{}

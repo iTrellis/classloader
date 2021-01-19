@@ -1,8 +1,0 @@
-language: go
-
-install:
-  - go get github.com/go-trellis/classloader
-
-script:
-  - go test -v ./...
-  
